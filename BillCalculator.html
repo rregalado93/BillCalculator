@@ -1,0 +1,37 @@
+<html ng-app="TipApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script type="text/javascript" src="/BillCalculator/Controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="/BillCalculator/mod.css">
+</head>
+
+<body>
+    <div ng-controller="totalController">
+        <div align="center">
+            <h1>
+                <p>Enter your bill's subtotal:</p>
+            </h1>
+            <input type="number", ng-model="subtotal", placeholder="0.00">
+            <input ng-click="clearSubtotal();", type="button", value="clear"></br></br>
+            Tip Percetage: <select ng-model="tipAmount", ng-options="s.name for s in tipAmounts"></select>
+            State: <select ng-model="state", ng-options="s.name for s in states"></select></br></br>
+        </div>
+        <div align="center">
+            <table>
+            <tr><td>Subtotal: {{subtotal|currency}}</td></tr>
+            <tr><td>Tax: {{ tax()|currency}}</td></tr>
+            <tr><td>Tip: {{tip()|currency}}</td></tr>
+            <td class="separator-above">
+              <font color="maroon", size="4">
+                  <b>
+                      Total: {{ total() | currency }}
+                  </b>
+              </font>
+            </td>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
